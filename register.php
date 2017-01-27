@@ -1,5 +1,15 @@
 <?php
+require 'database.php';
 if (!empty($_POST['email']) && !empty($_POST['password'])):
+  //Enter new user to the DB
+  $sql="INSERT INTO users (email,password) VALUES (:email,:password);"
+  $stmt=$conn->prepare($sql);
+  $stmt->bindparam(':email',$_POST['email']);
+  $stmt->bindparam(':password',password_hash($_POST['password']),PASSWORD_BCRYPT);
+  if($stmt->exeute()):
+    die('Success');
+  else:
+      die('Fail');
 endif;
 
  ?>
