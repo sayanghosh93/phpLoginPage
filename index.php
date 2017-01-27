@@ -5,6 +5,9 @@
   <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 </head>
  <body>
+   <div class="header">
+     <a href="index.php">Your app name</a>
+   </div>
    <h1>Please Login or Register</h1>
    <a href="login.php">Login</a> or
    <a href="register.php">Register</a>
