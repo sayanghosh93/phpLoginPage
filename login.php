@@ -1,7 +1,6 @@
 <?php
-if (!empty($_POST['email'])):
-  echo $_POST['email'];
-  die();
+if (!empty($_POST['email']) && !empty($_POST['password'])):
+endif;
 ?>
 
 <html>
@@ -17,8 +16,8 @@ if (!empty($_POST['email'])):
   <h2>Login</h2>
   <span>or <a href="register.php">Register here</a></span>
  <form action="login.php" method="POST">
-   <input type="email" placeholder="Email" value="email" />
-   <input type="password" placeholder="Password" value="passwd" />
+   <input type="email" placeholder="Email" name="email" />
+   <input type="password" placeholder="Password" name="passwd" />
    <input type="submit" />
  </form>
 </body>
