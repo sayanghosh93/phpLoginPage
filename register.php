@@ -1,18 +1,30 @@
 <?php
-require 'database.php';
-if (!empty($_POST['email']) && !empty($_POST['password'])):
-  //Enter new user to the DB
-  $sql="INSERT INTO users (email,password) VALUES (:email,:password);"
-  $stmt=$conn->prepare($sql);
-  $stmt->bindparam(':email',$_POST['email']);
-  $stmt->bindparam(':password',password_hash($_POST['password']),PASSWORD_BCRYPT);
-  if($stmt->exeute()):
-    die('Success');
-  else:
-      die('Fail');
-endif;
-
- ?>
+  $dbhost = 'localhost:3306';
+  $dbuser = 'root';
+  $dbpass = '';
+  if(! get_magic_quotes_gpc() ) {
+    $emp_name = addslashes ($_POST['emp_name']);
+    $emp_address = addslashes ($_POST['emp_address']);
+  }else {
+    $emp_name = $_POST['emp_name'];
+    $emp_address = $_POST['emp_address'];
+  }
+  $conn=mysql_connect($dbhost, $dbuser, $dbpass);
+  if(!$conn){
+    die("Unable to connect".mysql_error());
+  }
+  else{
+    echo "Connection Successfull";
+  }
+  $sql="INSERT INTO users_table "."(email,password) "."VALUES ($email,$password)";
+  mysql_select_db('users');
+  $retval = mysql_query( $sql, $conn );
+  if(! $retval ) {
+    die('Could not enter data: ' . mysql_error());
+  }
+  echo "Entered data successfully\n";
+  mysql_close($conn);
+?>
 
 <html>
 <head>

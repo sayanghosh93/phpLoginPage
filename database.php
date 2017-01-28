@@ -2,5 +2,11 @@
 $user='root';
 $password='';
 $db='users';
-$db=new mysqli('localhost',$user,$password,$db) or die("Unable to connect");
+$conn=new mysqli('localhost',$user,$password,$db);
+if(!$conn){
+  die("Unable to connect".mysql_error());
+}
+else{
+  echo "Connection Successfull";
+}
  ?>
