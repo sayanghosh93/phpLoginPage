@@ -1,4 +1,29 @@
 <?php
+$dbhost = 'localhost:3306';
+$dbuser = 'root';
+$dbpass = '';
+$dbname= 'users';
+$link = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+if (!$link) {
+  die('Connect Error (' . mysqli_connect_errno() . ') '
+          . mysqli_connect_error());
+}
+
+echo 'Success... ' . mysqli_get_host_info($link) . "\n";
+
+mysqli_close($link);
+  /*$email=$_POST['email'];
+  $password=$_POST['password'];
+  $confirm_password=$_POST['confirm_password'];
+  if(!empty($email) && !empty($password) && !empty($confirm_password)){
+    if($password==$confirm_password){
+      echo 'Registration Successfull';
+    }
+  }
+  else{
+    echo 'Please enter email and password';
+  }
   $dbhost = 'localhost:3306';
   $dbuser = 'root';
   $dbpass = '';
@@ -23,7 +48,7 @@
     die('Could not enter data: ' . mysql_error());
   }
   echo "Entered data successfully\n";
-  mysql_close($conn);
+  mysql_close($conn);*/
 ?>
 
 <html>
@@ -38,7 +63,7 @@
   </div>
    <h2>Register</h2>
    <span>or <a href="login.php">Login here</a></span>
-   <form action="login.php" method="POST">
+   <form action="register.php" method="POST">
      <input type="email" placeholder="Email" name="email" />
      <input type="password" placeholder="Password" name="password" />
      <input type="password" placeholder="Confirm Password" name="confirm_password" />

@@ -1,9 +1,3 @@
-<?php
-require 'database.php';
-if (!empty($_POST['email']) && !empty($_POST['password'])):
-endif;
-?>
-
 <html>
 <head>
   <title>Login Below</title>
